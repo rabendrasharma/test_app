@@ -1,20 +1,17 @@
 <%= form_for(@image, multipart: true, data: {'abide' => true})  do |f| %>
-	<div class="columns large-12">
-          </div>
-          <div class="row">
-            <div class="large-12 columns">
-              <h4 class="pics-label hide">Pics to be uploaded:</h4>
-              <br/>
-              <label for="photos">Add some pics?</label>
-              <%= f.file_field :avatar, id: "photos", multiple: true %>
-              <%= f.submit %>
+  <div class="row">
+    <div class="large-12 columns">
+      <h4 class="pics-label hide">Pics to be uploaded:</h4>
+      <br/>
+      <label for="photos">Add some pics?</label>
+      <%= f.file_field :avatar, id: "photos", multiple: true %>
+      <%= f.submit %>
 
-            </div>
-            <ul id="photos_clearing" class="clearing-thumbs" data-clearing>
-              </ul>
-          </div>
-
-          <br/><br/><br/><br/><br/>
+    </div>
+    <ul id="photos_clearing" class="clearing-thumbs" data-clearing>
+      </ul>
+  </div>
+  <br/><br/><br/><br/><br/>
 <% end %>
 
 <script type="text/javascript">

@@ -1,2 +1,1 @@
-
 $(".user_image_<%= params[:user_id] %>").html("<%=raw escape_javascript(render(:partial => 'subscribe', locals: {user_id: params[:user_id]}))%>");
