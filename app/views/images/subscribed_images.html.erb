@@ -1,0 +1,13 @@
+<div class="grid row">
+  <% unless @images.blank? %>
+  <% @images.each do |image| %>
+    <div class = "grid-item col-md-3 col-sm-4 col-xs-12">
+      <div class = "pin grid-item-content">
+        <div class = "pin-image">
+          <%= image_tag image.avatar(:medium) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>

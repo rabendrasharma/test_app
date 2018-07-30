@@ -1,0 +1,38 @@
+
+<div class="grid row">
+  <% unless @images.blank? %>
+  <% @images.each do |image| %>
+    <div class = "grid-item col-md-3 col-sm-4 col-xs-12">
+      <div class = "pin grid-item-content">
+        <div class = "pin-image">
+          <%= image_tag image.avatar(:medium) %>
+        </div>
+        <div class = "pin-content">
+        	<% unless Subscription.subscribed?(current_user.id, image.user.id) %>
+						<div class="user_image_<%= image.user_id%>">
+							<%= link_to "Subscribe".html_safe, subscribe_path(user_id: image.user.id), remote: true, class: "btn btn-success" %>
+						</div>
+					<% else %>
+					<div class="user_image_<%= image.user_id%>">
+						<%= link_to "Unsubscribe", unsubscribe_path(user_id: image.user.id), remote: true, class: "btn btn-success" %>
+					</div>
+				<% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $(function() {
+    $(document).ready(function() {
+      setInterval(function() {
+        jQuery.ajax({
+          url: "<%= refresh_images_path %>",
+          type: "GET",
+          dataType: "script"
+        });
+      }, 10000); // In every 30 seconds
+    });
+  });
+</script>
